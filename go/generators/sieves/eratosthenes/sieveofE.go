@@ -19,7 +19,6 @@ Last prime  99999989
 Basic primes : 2.4943548s
 
 
-
 */
 
 package main
