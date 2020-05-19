@@ -22,12 +22,10 @@ import (
 func PrimeGen2(primeLimit int) []int {
 
 	sqLimit := int(math.Sqrt(float64(primeLimit)))
-	primes := []int{2, 3, 5}
 	primeSieve := make([]bool, primeLimit, primeLimit)
 
-	//s := []int{1,7,11,13,17,19,23,29,31,37,41,43,47,49,53,59}
-	for x := 1; x < sqLimit; x++ {
-		for y := 1; y < sqLimit; y += 2 {
+	for x := 1; x <= sqLimit/2; x++ {
+		for y := 1; y < sqLimit ; y += 2 {
 			n := 4*x*x + y*y
 			if n >= primeLimit {
 				continue
@@ -39,7 +37,7 @@ func PrimeGen2(primeLimit int) []int {
 		}
 	}
 
-	for x := 1; x < sqLimit; x += 2 {
+	for x := 1; x < int(float64(sqLimit)/1.6); x += 2 {
 		for y := 2; y < sqLimit; y += 2 {
 			n := 3*x*x + y*y
 			if n >= primeLimit {
@@ -74,6 +72,10 @@ func PrimeGen2(primeLimit int) []int {
 		}
 	}
 
+	primes:= make([]int, 0, primeLimit/20)
+	primes = append(primes, 2)
+	primes = append(primes, 3)
+	primes = append(primes, 5)
 	for index, prime := range primeSieve {
 		if prime {
 			primes = append(primes, index)
