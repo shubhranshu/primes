@@ -21,18 +21,9 @@ Basic primes : 2.4943548s
 
 */
 
-package main
+package eratosthenes
 
-import (
-	"../../../helpers"
-	"time"
-)
-
-const primeLimit = 100000000
-
-func main() {
-
-	defer helpers.TimeTrack(time.Now(), "Basic primes")
+func PrimeGen(primeLimit int) []int {
 
 	primeSieve := make([]int, primeLimit, primeLimit)
 	primeSieve[2] = 0
@@ -50,7 +41,6 @@ func main() {
 			primeSlice = append(primeSlice, index)
 		}
 	}
-	println("Primes ", len(primeSlice[2:]))
-	println("First prime ", primeSlice[2])
-	println("Last prime ", primeSlice[len(primeSlice)-1])
+
+	return primeSlice[2:]
 }

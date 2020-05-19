@@ -1,17 +1,27 @@
-package main
+/*
+        Atkins         10 mill         664579      91.6101ms
+ Atkins Github         10 mill         664579      90.5216ms
+   Atkins fast         10 mill         664579      64.8269ms
+        Atkins        100 mill        5761455     878.6588ms
+ Atkins Github        100 mill        5761455     1.3161449s
+   Atkins fast        100 mill        5761455      786.908ms
+        Atkins       1000 mill       50847576     9.2154671s
+ Atkins Github       1000 mill       50847534    13.3827379s
+   Atkins fast       1000 mill       50847576     8.9590751s
+        Atkins      10000 mill      455052511  3m32.0621299s
+ Atkins Github      10000 mill      455052511  6m29.6870127s
+   Atkins fast      10000 mill      455052511  4m25.8317892s
+
+*/
+package atkins
 
 import (
-	"../../../helpers"
 	"math"
-	"time"
 )
 
-const primeLimit = 100000000
+func PrimeGen2(primeLimit int) []int {
 
-func main() {
-
-	defer helpers.TimeTrack(time.Now(), "Basic primes")
-	sqLimit := int(math.Sqrt(primeLimit))
+	sqLimit := int(math.Sqrt(float64(primeLimit)))
 	primes := []int{2, 3, 5}
 	primeSieve := make([]bool, primeLimit, primeLimit)
 
@@ -70,5 +80,5 @@ func main() {
 		}
 	}
 
-	println(len(primes))
+	return primes
 }

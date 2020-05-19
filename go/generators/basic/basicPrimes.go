@@ -6,20 +6,18 @@ Basic primes : 2.5882856s
 
 */
 
-package main
+package basic
 
 import (
-	"../../helpers"
 	"math"
-	"time"
 )
 
-const primeLimit = 10000000
+func PrimeGen(primeLimit int) []int {
 
-func main() {
-	defer helpers.TimeTrack(time.Now(), "Basic primes")
 	primes := make([]int, 0, primeLimit/10)
+
 	primes = append(primes, 2)
+
 	for i := 3; i < primeLimit; i = i + 2 {
 		sqPrime := int(math.Sqrt(float64(i)))
 		for _, prime := range primes {
@@ -33,8 +31,5 @@ func main() {
 		}
 	}
 
-	println("Total primes ", len(primes))
-	//for _,prime := range primes {
-	//	println(prime)
-	//}
+	return primes
 }
